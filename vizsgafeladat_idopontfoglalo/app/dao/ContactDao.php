@@ -5,9 +5,19 @@ use PDO;
 
 class ContactDao {
     private $pdo;
+    private $name;
+    private $email;
+    private $phone;
+    private $subject;
+    private $message;
 
-    public function __construct(PDO $pdo) {
+    public function __construct($pdo, $name, $email, $phone, $subject, $message) {
         $this->pdo = $pdo;
+        $this->name = $name;
+        $this->email = $email;
+        $this->phone = $phone;
+        $this->subject = $subject;
+        $this->message = $message;
     }
 
         public function save($name, $email, $phone, $subject, $message): bool {
