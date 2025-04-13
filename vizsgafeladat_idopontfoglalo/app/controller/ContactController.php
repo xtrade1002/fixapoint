@@ -1,7 +1,7 @@
 <?php
 namespace app\controller;
 
-use app\dao\ContactDao;
+use app\model\ContactDao;    
 use app\model\Contact;
 use app\_utils\Database;
 
@@ -10,9 +10,9 @@ class ContactController {
     private $pdo;
 
     public function __construct() {
-        $db = new Database(); // ez a saját Database osztályod
-        $this->pdo = $db->getConnection(); // lekérjük a PDO kapcsolatot
-        $this->dao = new ContactDao($this->pdo); // DAO-t példányosítjuk ezzel
+        $database = new Database();
+        $this->pdo = $database->getConnection();
+        $this->dao = new ContactDao($this->pdo); 
     }
 
     public function showForm() {
@@ -44,17 +44,5 @@ class ContactController {
             require_once __DIR__ . '/../view/main/contact.php';
         }
         
-
-        // Email küldés
-        /*
-        $to = "admin@yourdomain.com"; // IDE jön az admin email címe
-        $headers = "From: $email" . "\r\n" .
-                   "Reply-To: $email" . "\r\n" .
-                   "Content-Type: text/plain; charset=UTF-8";
-
-        mail($to, "Kapcsolatfelvétel: $subject", $message, $headers);
-
-        require '../app/views/contact/contact.php';
-        */
     }
 }

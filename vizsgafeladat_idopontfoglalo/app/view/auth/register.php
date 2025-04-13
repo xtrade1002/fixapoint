@@ -49,11 +49,13 @@ include_once __DIR__ . '/../layout/menu.php';
           </div>
 
           <div class="mb-2 input-group">
-            <input type="password" class="form-control shadow-sm" id="password_confirm" name="password_confirm" placeholder="Jelszó megerősítése *" required>
-            <button class="btn btn-light border" type="button" onclick="togglePassword('password', this)">
+            <input type="password" class="form-control shadow-sm" id="password2" name="password2" placeholder="Jelszó megerősítése *" required>
+            <button class="btn btn-light border" type="button" onclick="togglePassword('password2', this)">
               <i class="bi bi-eye-fill text-dark"></i>
             </button>
           </div>
+
+ 
 
           <div class="mb-2">
             <input type="text" class="form-control shadow-sm" id="coupon" name="coupon" placeholder="Kuponkód">

@@ -1,7 +1,8 @@
 <?php
 namespace app\controller\dashboard;
+require_once __DIR__ . '/../../model/dashboard/ServiceDao.php';
 
-use app\dao\ServiceDao;
+use app\model\dashboard\ServiceDao;
 
 class ServiceController
 {
@@ -12,7 +13,6 @@ class ServiceController
         $this->serviceDao = new ServiceDao();
     }
 
-    // Szolgáltatás hozzáadása
     public function addService($nameOfService, $categoryOfService, $description, $duration, $price)
     {
         $result = $this->serviceDao->addService($nameOfService, $categoryOfService, $description, $duration, $price);
@@ -24,7 +24,6 @@ class ServiceController
         }
     }
 
-    // Szolgáltatás módosítása
     public function updateService($id, $nameOfService, $categoryOfService, $description, $duration, $price)
     {
         $result = $this->serviceDao->updateService($id, $nameOfService, $categoryOfService, $description, $duration, $price);
@@ -36,7 +35,6 @@ class ServiceController
         }
     }
 
-    // Szolgáltatás törlése
     public function deleteService($id)
     {
         $result = $this->serviceDao->deleteService($id);
@@ -48,7 +46,6 @@ class ServiceController
         }
     }
 
-    // Szolgáltatások lekérése
     public function getAllServices()
     {
         $services = $this->serviceDao->getAllServices();
@@ -59,9 +56,9 @@ class ServiceController
         }
     }
 
-    // Szolgáltatás lekérése ID alapján
     public function getServiceById($id)
     {
-        return $this->serviceDao->getServiceById($id);
+        return $this->serviceDao->getServiceById($id); 
     }
+    
 }

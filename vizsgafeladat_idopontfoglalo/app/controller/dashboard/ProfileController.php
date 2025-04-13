@@ -1,32 +1,63 @@
 <?php
-namespace app\controller\dashboard;
+namespace app\controller;
 
-use app\dao\UserDao;
+require_once('app/model/UserDao.php');
+
+use app\model\UserDao;
 
 class ProfileController
 {
-    private $userDao;
-
-    public function __construct()
+    public function load($view, $data = [])
     {
-        $this->userDao = new UserDao();
+        extract($data);
+        ob_start();
+        require_once("app/view/auth/dashboard/profile/{$view}.php");
+        return $data;
     }
 
-    public function updateProfile($id, $fullName, $companyName, $phone, $password = null)
+    public function viewProfile($id)
     {
-       
-        $passwordHash = $password ? password_hash($password, PASSWORD_DEFAULT) : null;
+        $userDao = new UserDao();
+        $user = $userDao->getById($id);
 
-       
-        return $this->userDao->updateUser($id, $fullName, $companyName, $phone, $passwordHash);
+        return $this->load('view', [
+            'user' => $user
+        ]);
     }
 
- 
-    public function deleteProfile($id)
+    public function editProfile($id)
     {
+        $userDao = new UserDao();
+        $user = $userDao->getById($id);
+
+        return $this->load('edit', [
+            'user' => $user
+        ]);
+    }
+
+    public function updateProfile($id) 
+    {
+        $userDao = new UserDao();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
+            $name = $_POST['fullName'] ?? '';
+            $email = $_POST['email'] ?? '';
+            $phone = $_POST['phone'] ?? '';
+            $company = $_POST['companyName'] ?? '';
+            $password = $_POST['password'] ?? '';
+
+            $hashedPassword = !empty($password) ? password_hash($password, PASSWORD_DEFAULT) : null;
+            $success = $userDao->updateProfile($id, $name, $email, $phone, $company, $hashedPassword);
+
+              if ($success) {
+                header('Location: profile.php?status=success');
+            } else {
+                header('Location: profile.php?status=error');
+            }
+            exit;
+        }
         
-        return $this->userDao->deleteUser($id);
+        header('Location: profile.php?status=invalid');
+        exit;
     }
-
-    
 }

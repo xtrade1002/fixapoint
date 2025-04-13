@@ -1,7 +1,7 @@
 <?php
 include_once 'header.php';
 
-use app\dao\UserDao;
+use app\model\UserDao;
 use app\controller\dashboard\ServiceController;
 
 $userDao = new UserDao();
@@ -9,81 +9,53 @@ $user = $userDao->getById($_SESSION['user_id']);
 
 $serviceController = new ServiceController();
 $services = $serviceController->getAllServices();  // Szolgáltatások lekérése
-
 ?>
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h2 class="mb-4 text-center">Szolgáltatások</h2>
 
-            <h4 class="text-center text-warning">Új kategória hozzáadása</h4>
-            <form action="services.php" method="POST">
-                <div class="mb-3">
-                    <label for="nameOfService" class="form-label fw-bold">Szolgáltatás kategóriája *</label>
-                    <input type="text" class="form-control" id="nameOfService" name="nameOfService" required>
-                </div>
+    <!-- Szolgáltatások listája -->
+    <div class="container mt-5">
+      <h2 class="mb-4 text-center fs-2">Szolgáltatások listája</h2>
 
-                <div class="mb-3">
-                    <label for="categoryOfService" class="form-label fw-bold">Szolgáltatás neve *</label>
-                    <input type="text" class="form-control" id="categoryOfService" name="categoryOfService" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="description" class="form-label fw-bold">Leírás</label>
-                    <textarea class="form-control" id="description" name="description" ></textarea>
-                </div>
-
-                <div class="mb-3">
-                    <label for="duration" class="form-label fw-bold">Időtartam (perc) </label>
-                    <input type="number" class="form-control" id="duration" name="duration" >
-                </div>
-
-                <div class="mb-3">
-                    <label for="price" class="form-label fw-bold">Ár *</label>
-                    <input type="number" step="0.01" class="form-control" id="price" name="price" required>
-                </div>
-                
-            
-                <div class="d-flex justify-content-center ">
-                        <button type="submit" class="btn btn-warning fw-bold w-50 w-md-auto mt-3">Szolgáltatás hozzáadása</button>
-                </div>
-            </form>
-        </div>
-    </div>
-  </div>
-
-  <div class="container mt-5">
-  <h2 class="mb-4 text-center">Szolgáltatások listája</h2>
-
-  <table class="table table-striped table-bordered">
-    <thead>
-      <tr>
-        <th class="text-center">Szolgáltatás neve</th>
-        <th class="text-center">Kategória</th>
-        <th class="text-center">Leírás</th>
-        <th class="text-center">Időtartam</th>
-        <th class="text-center">Ár</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php if (!empty($services)): ?>
-        <?php foreach ($services as $service): ?>
-          <tr>
-            <td class="text-center"><?= htmlspecialchars($service['nameOfService']) ?></td>
-            <td class="text-center"><?= htmlspecialchars($service['categoryOfService']) ?></td>
-            <td class="text-center"><?= htmlspecialchars($service['description']) ?></td>
-            <td class="text-center"><?= htmlspecialchars($service['duration']) ?> perc</td>
-            <td class="text-center"><?= htmlspecialchars($service['price']) ?> Ft</td>
-          </tr>
-        <?php endforeach; ?>
-      <?php else: ?>
-        <tr>
-          <td colspan="5" class="text-center">Nincsenek szolgáltatások!</td>
-        </tr>
-      <?php endif; ?>
-    </tbody>
-  </table>
+      <div class="table-responsive">
+        <table class="table table-bordered text-center table-hover">
+          <thead class="table-secondary">
+            <tr>
+              <th>Szolgáltatás neve</th>
+              <th>Kategória</th>
+              <th>Leírás</th>
+              <th>Időtartam</th>
+              <th>Ár</th>
+              <th>Műveletek</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php if (!empty($services) && is_array($services) && isset($services[0]['nameOfService'])): ?>
+              <?php foreach ($services as $service): ?>
+                <tr>
+                  <td><?= htmlspecialchars($service['nameOfService']) ?></td>
+                  <td><?= htmlspecialchars($service['categoryOfService']) ?></td>
+                  <td><?= htmlspecialchars($service['description']) ?></td>
+                  <td><?= htmlspecialchars($service['duration']) ?> perc</td>
+                  <td><?= htmlspecialchars($service['price']) ?> Ft</td>
+                  <td>
+                    <a href="update_service.php?id=<?= htmlspecialchars($service['id']) ?>" class="btn btn-warning btn-sm">Módosítás</a>
+                    <a href="delete_service.php?id=<?= htmlspecialchars($service['id']) ?>" class="btn btn-danger btn-sm"
+                       onclick="return confirm('Biztosan törölni szeretnéd ezt a szolgáltatást?');">Törlés</a>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            <?php else: ?>
+              <tr><td colspan="6">Nincs megjeleníthető szolgáltatás vagy hiba történt.</td></tr>
+            <?php endif; ?>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-center mt-4">
+    <a href="add_service.php" class="btn btn-primary fw-bold">
+         Új szolgáltatás hozzáadása
+    </a>
 </div>
+
+  
+
 
 

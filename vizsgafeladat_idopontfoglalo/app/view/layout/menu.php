@@ -1,6 +1,6 @@
 <?php
 if (!defined('BASE_URL')) {
-    define('BASE_URL', '/Webfejlesztő_ruander/vizsgafeladat_idopontfoglalo/');
+    define('BASE_URL', 'vizsgafeladat_idopontfoglalo/');
 }
 ?>
 

@@ -1,14 +1,12 @@
 <?php
 namespace app\controller;
 
-interface IController
-{
+interface ICrudController {
+    public function load($view, $data = []);
     public function listAll();
     public function save();
     public function loadObjToEdit(int $id);
-    public function updateById();
-    public function deleteById();
     public function loadObjToDelete(int $id);
-    public function load($view, $data = []);
+    public function updateById(int $id);
+    public function deleteById(int $id);
 }
-?>

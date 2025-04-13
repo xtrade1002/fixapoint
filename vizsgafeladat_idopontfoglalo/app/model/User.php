@@ -14,11 +14,28 @@ class User {
     public $coupon;
     public $newsletter;
     public $terms;
-    public $is_admin;
     private $pdo;
 
     public function __construct($pdo) {
         $this->pdo = $pdo;
+    }
+
+    public function save(): bool {
+        $sql = "INSERT INTO users (fullName, companyName, phone, email, password, coupon, newsletter, terms)
+                VALUES (:fullName, :companyName, :phone, :email, :password, :coupon, :newsletter, :terms)";
+        
+        $stmt = $this->pdo->prepare($sql);
+
+        return $stmt->execute([
+            'fullName'    => $this->fullName,
+            'companyName' => $this->companyName,
+            'phone'       => $this->phone,
+            'email'       => $this->email,
+            'password'    => $this->password,
+            'coupon'      => $this->coupon,
+            'newsletter'  => $this->newsletter,
+            'terms'       => $this->terms
+        ]);
     }
 
     public function getId(): ?int {
@@ -83,4 +100,6 @@ class User {
         return password_verify($password, $this->password);
     }
 }
+
+
 ?>

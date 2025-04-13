@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../_utils/config.php';
+require_once __DIR__ . '/../../_utils/Config.php';
 include_once __DIR__ . '/../layout/header.php';
 include_once __DIR__ . '/../layout/menu.php';
 ?>

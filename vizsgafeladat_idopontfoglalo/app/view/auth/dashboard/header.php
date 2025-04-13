@@ -11,7 +11,6 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -36,6 +35,7 @@ if (!isset($_SESSION['user_id'])) {
     
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="contactmessage.php">Üzenetek</a></li>
         <li class="nav-item"><a class="nav-link" href="profile.php">Profilom</a></li>
         <li class="nav-item"><a class="nav-link" href="services.php">Szolgáltatások</a></li>
         <li class="nav-item"><a class="nav-link" href="appointments.php">Foglalások</a></li>
@@ -45,3 +45,21 @@ if (!isset($_SESSION['user_id'])) {
     </div>
   </div>
 </nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = location.pathname.split("/").pop(); // pl. profile.php
+    const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+    navLinks.forEach(link => {
+      const linkPage = link.getAttribute("href");
+
+      // Ne szedjük le a kijelentkezésről a text-warning osztályt
+      if (linkPage === "<?= BASE_URL ?>logout.php") return;
+
+      if (linkPage === currentPage) {
+        link.classList.add("text-warning", "fw-bold");
+      }
+    });
+  });
+</script>

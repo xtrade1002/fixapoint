@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../_utils/config.php';
+require_once __DIR__ . '/../../_utils/Config.php';
 include_once __DIR__ . '/../layout/header.php';
 include_once __DIR__ . '/../layout/menu.php';
 ?>
@@ -143,12 +143,9 @@ include_once __DIR__ . '/../layout/menu.php';
   </div>
 </div>
 
-<!-- Bootstrap Icons és CSS szükséges hozzá -->
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- Bootstrap Icons -->
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-<link rel="stylesheet" href="/public/css/style.css">
+
 
 
 <?php include_once(__DIR__ . '/../layout/footer.php'); ?>
