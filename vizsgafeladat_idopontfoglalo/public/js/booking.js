@@ -44,7 +44,7 @@ function updateSlotDates() {
         const isoDate = date.toISOString().split("T")[0];
         const time = `${hour}${minute}`;
         const slot = `${isoDate} ${time}`;
-        const cell = tbody.rows[rowIndex].cells[dayIndex + 1]; // első oszlop az idő
+        const cell = tbody.rows[rowIndex].cells[dayIndex + 1]; 
         cell.setAttribute("onclick", `openBookingModal('${slot}')`);
       }
       rowIndex++;
@@ -76,10 +76,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// Beégetett próba foglalások
+
 const sampleBookings = [
     {
-      date: '2025-04-08', // Kedd
+      date: '2025-04-08', 
       start: '9:00',
       end: '11:00',
       label: '1D szempilla'
@@ -98,12 +98,12 @@ const sampleBookings = [
       const totalStartIndex = (startHour - 8) * 3 + (startMinute / 15);
       const totalEndIndex = (endHour - 8) * 3 + (endMinute / 15);
   
-      // keresd meg a megfelelő nap indexét
+   
       const dateObj = new Date(booking.date);
-      const dayIndex = (dateObj.getDay() + 6) % 7; // hétfő = 0, vasárnap = 6
+      const dayIndex = (dateObj.getDay() + 6) % 7; 
   
       for (let rowIndex = totalStartIndex; rowIndex < totalEndIndex; rowIndex++) {
-        const cell = tbody.rows[rowIndex]?.cells[dayIndex + 1]; // első cella = idő
+        const cell = tbody.rows[rowIndex]?.cells[dayIndex + 1];
         if (cell) {
           cell.classList.add('booked');
         }

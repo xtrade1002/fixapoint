@@ -1,7 +1,11 @@
 <?php 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-require_once __DIR__ . '/app/_utils/config.php';
-require_once 'vendor/autoload.php';
+require_once __DIR__ . '/app/_utils/Config.php';
+require_once __DIR__ . '/vendor/autoload.php'; 
+
 include_once __DIR__ . '/app/view/layout/header.php';
 include_once __DIR__ . '/app/view/layout/menu.php';
 

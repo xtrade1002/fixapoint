@@ -46,7 +46,7 @@
 
 .card-hover:hover {
   transform: translateY(-6px);
-  box-shadow: 0 1rem 1.5rem rgba(250, 229, 229, 0.2); /* shadow-lg effekt */
+  box-shadow: 0 1rem 1.5rem rgba(250, 229, 229, 0.2);
 }
 
 
@@ -74,7 +74,7 @@
 
 /*Contact/focus color*/
 .form-control:focus {
-  border-color: #ffb007 !important;    /* Bootstrap sárga */
+  border-color: #ffb007 !important; 
   box-shadow: 0 0 0 0.1rem rgba(255, 166, 0, 0.863); 
 }
 
@@ -150,7 +150,7 @@ footer {
 }
 
 .slot {
-  height: 28px; /* Eddigi 50px helyett */
+  height: 28px; 
   background-color: #f8f9fa;
   cursor: pointer;
   padding: 0
@@ -160,8 +160,8 @@ footer {
 }
 
 .slot.booked {
-  background-color: #ffc0cb !important; /* halvány rózsaszín */
-  pointer-events: none; /* ne lehessen rákattintani */
+  background-color: #ffc0cb !important; 
+  pointer-events: none; 
   position: relative;
 }
 .slot.booked::after {
