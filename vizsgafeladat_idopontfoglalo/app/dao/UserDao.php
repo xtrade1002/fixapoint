@@ -2,20 +2,6 @@
 namespace app\dao;
 use app\_utils\Database as Db;
 
-/**A UserDao (Data Access Object) egy olyan osztály, amely az adatbázis műveletekért felelős a felhasználói adatok kezelésében. 
- *  UserDao osztály célja, hogy elválassza az alkalmazás üzleti logikáját az adatbázis műveletektől, így a kód olvashatóbb és karbantarthatóbb legyen.
- *  Az adatbázis műveletek, például a lekérdezések, beillesztések, frissítések és törlések mind ebben az osztályban valósulnak meg.
-
-A UserDao osztály általában az alábbi műveleteket végzi el:
-
-Lekérdezés (Read): Felhasználói adatok lekérdezése az adatbázisból (például összes felhasználó lekérdezése, egy adott felhasználó lekérdezése azonosító alapján).
-Mentés (Create): Új felhasználói adat beszúrása az adatbázisba.
-Frissítés (Update): Meglévő felhasználói adat módosítása az adatbázisban.
-Törlés (Delete): Felhasználói adat törlése az adatbázisból.
-Egyéb műveletek: Speciális lekérdezések és műveletek, mint például felhasználó keresése e-mail alapján, bejelentkezés ellenőrzése, stb.
-Az UserDao osztály implementálja az ICrudDao interfészt, amely biztosítja, hogy az összes CRUD művelet megvalósuljon. */
-
-
 class UserDao implements ICrudDao {
 
     public function getAll() {
