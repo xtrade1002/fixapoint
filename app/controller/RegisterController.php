@@ -14,7 +14,6 @@ class RegisterController
         $success = null; 
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            echo "POST feldolgozás elindult<br>";
             $fullName = trim($_POST['fullName'] ?? '');
             $companyName = trim($_POST['companyName'] ?? '');
             $phone = trim($_POST['phone'] ?? '');

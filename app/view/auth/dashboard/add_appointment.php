@@ -38,8 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="col-md-6">
-            <label for="serviceId" class="form-label fw-bold">Szolgáltatás ID *</label>
-            <input type="number" class="form-control" id="serviceId" name="service_id" required>
+            <label for="serviceId" class="form-label fw-bold">Szolgáltatás *</label>
+            <input type="text" class="form-control" id="serviceId" name="service_id" placeholder="pl. Szempilla hosszabbítás" required>
         </div>
 
         <div class="col-md-6">

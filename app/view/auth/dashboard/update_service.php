@@ -17,9 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $duration = $_POST['duration'];
     $price = $_POST['price'];
 
-    $serviceController->updateService($id, $name, $category, $description, $duration, $price);
-    header("Location: services.php");
-    exit();
+    $serviceController = new ServiceController();
+$result = $serviceController->updateService($id, $name, $category, $description, $duration, $price);
+
+header("Location: services.php?status=" . $result['status'] . "&message=" . urlencode($result['message']));
+exit();
 }
 
 if (isset($_GET['id'])) {

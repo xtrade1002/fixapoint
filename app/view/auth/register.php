@@ -29,7 +29,7 @@ include_once __DIR__ . '/../layout/menu.php';
           </div>
 
           <div class="mb-2 mt-1">
-            <input type="text" class="form-control shadow-sm" id="companyName" name="companyName" placeholder="Cégnév *" required>
+            <input type="text" class="form-control shadow-sm" id="companyName" name="companyName" placeholder="Cégnév">
           </div>
 
           <div class="mb-2 mt-1">

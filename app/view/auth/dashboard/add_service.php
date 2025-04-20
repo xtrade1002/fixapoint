@@ -12,23 +12,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $price = $_POST['price'];
 
     $serviceController = new ServiceController();
-    $serviceController->addService($name, $category, $description, $duration, $price);
+$result = $serviceController->addService($name, $category, $description, $duration, $price);
 
-    header("Location: services.php?status=" . $result['status'] . "&message=" . urlencode($result['message']));
-
-    exit();
+header("Location: services.php?status=" . $result['status'] . "&message=" . urlencode($result['message']));
+exit();
 }
 ?>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <div class="container mt-5 col-md-8 col-lg-6">
-    <h2 class="text-center mb-5 mt-5">Új szolgáltatás</h2>
+    <h2 class="text-center mt-5">Új szolgáltatás</h2>
+    <h6  class="text-center mb-5 mt-2">Add meg,hogy milyen jellegű szolgáltatást szeretnél kínálni</h6>
 
     <form action="add_service.php" method="POST" class="row g-3 justify-content-center">
         <div class="col-md-6">
             <label for="categoryOfService" class="form-label fw-bold">Szolgáltatás kategóriája *</label>
-            <input type="text" class="form-control" id="categoryOfService" name="categoryOfService" required>
+            <input type="se" class="form-control" id="categoryOfService" name="categoryOfService" required>
         </div>
 
         <div class="col-md-6">

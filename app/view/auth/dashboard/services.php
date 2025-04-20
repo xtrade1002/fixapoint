@@ -12,8 +12,15 @@ $services = $serviceController->getAllServices();
 ?>
 
 
+
     <div class="container mt-5">
-      <h2 class="mb-4 text-center fs-2">Szolgáltatások listája</h2>
+    <?php if (isset($_GET['status']) && isset($_GET['message'])): ?>
+  <div class="alert alert-<?= $_GET['status'] === 'success' ? 'success' : 'danger' ?> text-center fw-bold">
+    <?= htmlspecialchars($_GET['message']) ?>
+  </div>
+<?php endif; ?>
+
+      <h2 class="mb-5 mt-5 text-center fs-2">Szolgáltatások listája</h2>
 
       <div class="table-responsive">
         <table class="table table-bordered text-center table-hover">
