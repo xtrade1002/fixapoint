@@ -38,6 +38,7 @@ if (!isset($_SESSION['user_id'])) {
         <li class="nav-item"><a class="nav-link" href="contactmessage.php">Üzenetek</a></li>
         <li class="nav-item"><a class="nav-link" href="profile.php">Profilom</a></li>
         <li class="nav-item"><a class="nav-link" href="services.php">Szolgáltatások</a></li>
+        <li class="nav-item"><a class="nav-link" href="category/add_category.php">Kategóriák</a></li>
         <li class="nav-item"><a class="nav-link" href="appointments.php">Foglalások</a></li>
         <li class="nav-item"><a class="nav-link" href="settings.php">Beállítások</a></li>
         <li class="nav-item"><a class="nav-link text-warning" href="<?= BASE_URL ?>logout.php">Kijelentkezés</a></li>

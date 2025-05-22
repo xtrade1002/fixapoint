@@ -72,6 +72,15 @@ CREATE TABLE `prices` (
   `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+INSERT INTO `categories` (`id`, `name`) VALUES
+  (1, 'Wellness'),
+  (2, 'Szépségápolás');
+
 
 
 INSERT INTO `prices` (`id`, `service_id`, `service_duration`, `price`) VALUES

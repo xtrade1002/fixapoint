@@ -1,8 +1,10 @@
 <?php
 include_once 'header.php';
 require_once __DIR__ . '/../../../controller/dashboard/ServiceController.php';
+require_once __DIR__ . '/../../../controller/dashboard/CategoryController.php';
 
 use app\controller\dashboard\ServiceController;
+use app\controller\dashboard\CategoryController;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name = $_POST['nameOfService'];
@@ -12,11 +14,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $price = $_POST['price'];
 
     $serviceController = new ServiceController();
-$result = $serviceController->addService($name, $category, $description, $duration, $price);
+    $result = $serviceController->addService($name, $category, $description, $duration, $price);
 
-header("Location: services.php?status=" . $result['status'] . "&message=" . urlencode($result['message']));
-exit();
+    header("Location: services.php?status=" . $result['status'] . "&message=" . urlencode($result['message']));
+    exit();
 }
+
+$categoryController = new CategoryController();
+$categories = $categoryController->getAllCategories();
 ?>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +33,15 @@ exit();
     <form action="add_service.php" method="POST" class="row g-3 justify-content-center">
         <div class="col-md-6">
             <label for="categoryOfService" class="form-label fw-bold">Szolgáltatás kategóriája *</label>
-            <input type="se" class="form-control" id="categoryOfService" name="categoryOfService" required>
+            <?php if (empty($categories)): ?>
+                <div class="alert alert-warning fw-bold">Nincs elérhető kategória. Kérjük, vegye fel velünk a kapcsolatot.</div>
+            <?php else: ?>
+                <select class="form-select" id="categoryOfService" name="categoryOfService" required>
+                    <?php foreach ($categories as $cat): ?>
+                        <option value="<?= htmlspecialchars($cat['name']) ?>"><?= htmlspecialchars($cat['name']) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            <?php endif; ?>
         </div>
 
         <div class="col-md-6">
