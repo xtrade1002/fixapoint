@@ -1,5 +1,5 @@
 <?php
-use App\Controllers\AppointmentController;
+use app\controller\AppointmentController;
 
 $controller = new AppointmentController();
 

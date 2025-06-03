@@ -1,8 +1,8 @@
 <?php
-namespace app\controllers;
+namespace app\controller;
 
-use app\utils\Database;
-use app\models\AppointmentDao;
+use app\_utils\Database;
+use app\dao\dashboard\AppointmentDao;
 
 class AppointmentController {
     private $dao;

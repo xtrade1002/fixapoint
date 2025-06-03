@@ -4,13 +4,13 @@ namespace app\controller\dashboard;
 require_once(__DIR__ . '/../ICrudController.php');
 require_once(__DIR__ . '/../../model/UserDao.php');
 require_once(__DIR__ . '/../../model/dashboard/ServiceDao.php'); 
-require_once(__DIR__ . '/../../model/dashboard/AppointmentDao.php');
+require_once(__DIR__ . '/../../dao/dashboard/AppointmentDao.php');
 
 
 use app\controller\ICrudController;
 use app\model\UserDao;
 use app\model\dashboard\ServiceDao;
-use app\model\dashboard\AppointmentDao;
+use app\dao\dashboard\AppointmentDao;
 use app\model\dashboard\Appointment;
 
 class AppointmentController implements ICrudController 
@@ -27,20 +27,20 @@ class AppointmentController implements ICrudController
     }
     
     public function updateAppointment($id, $clientName, $serviceId, $appointmentDate, $appointmentTime) {
-        require_once '../dao/AppointmentDao.php';
+        require_once __DIR__ . '/../../dao/dashboard/AppointmentDao.php';
         $dao = new AppointmentDao();
         return $dao->updateAppointment($id, $clientName, $serviceId, $appointmentDate, $appointmentTime);
     }
 
     public function deleteAppointment($id) {
-        require_once __DIR__ . '/../../../dao/AppointmentDao.php';
+        require_once __DIR__ . '/../../../dao/dashboard/AppointmentDao.php';
         $dao = new AppointmentDao();
         return $dao->deleteAppointment($id);
     }
     
 
     public function getAppointmentById($id) {
-        require_once __DIR__ . '/../../../dao/AppointmentDao.php';
+        require_once __DIR__ . '/../../../dao/dashboard/AppointmentDao.php';
         $dao = new AppointmentDao();
         return $dao->getById($id);
     }
@@ -58,7 +58,7 @@ class AppointmentController implements ICrudController
 }
 
 public function addAppointment($clientName, $serviceId, $appointmentDate, $appointmentTime) {
-    require_once '../dao/AppointmentDao.php';
+    require_once __DIR__ . '/../../dao/dashboard/AppointmentDao.php';
     $dao = new AppointmentDao();
     return $dao->insertAppointment($clientName, $serviceId, $appointmentDate, $appointmentTime);
 }

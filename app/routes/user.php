@@ -1,5 +1,5 @@
 <?php
-use app\controllers\UserController;
+use app\controller\UserController;
 
 $controller = new UserController();
 
