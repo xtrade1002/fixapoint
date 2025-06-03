@@ -2,7 +2,7 @@
 
 namespace app\controller;
 
-use app\dao\AppointmentDao;
+use app\dao\dashboard\AppointmentDao;
 use app\_utils\Database;
 
 class AppointmentController

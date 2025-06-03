@@ -1,5 +1,5 @@
 <?php
-namespace app\dao;
+namespace app\dao\dashboard;
 
 use app\_utils\Database;
 
