@@ -7,4 +7,4 @@ Weboldal: mesterremek.online
 
 ## Admin funkciók bővítése
 
-Az admin felületen már lehetőség van új szolgáltatási kategóriák hozzáadására a `dashboard/category/add_category.php` oldalon. Az új kategóriák a szolgáltatás rögzítésekor kiválaszthatók.
+Az admin felületen már lehetőség van új szolgáltatási kategóriák hozzáadására a `dashboard/category/add_category.php` oldalon. Az új kategóriák a szolgáltatás rögzítésekor kiválaszthatók..
